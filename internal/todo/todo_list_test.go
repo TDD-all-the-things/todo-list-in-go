@@ -1,8 +1,9 @@
-package todo
+package todo_test
 
 import (
 	"testing"
 
+	"github.com/TDD-all-the-things/todo-list-in-go/internal/todo"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -25,5 +26,15 @@ import (
 // Total: 3 items, 1 item done
 
 func TestTodoList(t *testing.T) {
-	assert.Equal(t, false, true)
+
+	t.Run("add + list", func(t *testing.T) {
+		l := todo.NewList()
+
+		item := todo.Item{}
+		index := l.Add(item)
+
+		items := l.ListItems()
+	
+		assert.Equal(t, item, items[index.N])
+	})
 }
