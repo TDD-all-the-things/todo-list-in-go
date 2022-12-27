@@ -8,6 +8,7 @@ type List interface {
 }
 
 type Item struct {
+	Content string
 }
 
 type ItemIndex struct {
