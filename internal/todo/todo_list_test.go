@@ -30,13 +30,18 @@ func TestTodoList(t *testing.T) {
 	t.Run("add + list", func(t *testing.T) {
 		l := todo.NewList()
 
-		item := todo.Item{
-			Content: "Item-1",
-		}
-		index := l.Add(item)
+		item1 := todo.Item{Content: "Item-1"}
+		item2 := todo.Item{Content: "Item-2"}
+		item3 := todo.Item{Content: "Item-3"}
+
+		index1 := l.Add(item1)
+		index2 := l.Add(item2)
+		index3 := l.Add(item3)
 
 		items := l.ListItems()
 
-		assert.Equal(t, item.Content, items[index.N].Content)
+		assert.Equal(t, item1.Content, items[index1.N].Content)
+		assert.Equal(t, item2.Content, items[index2.N].Content)
+		assert.Equal(t, item3.Content, items[index3.N].Content)
 	})
 }
