@@ -15,14 +15,16 @@ type ItemIndex struct {
 }
 
 type list struct {
+	items []Item
 }
 
 func NewList() List {
-	return &list{}
+	return &list{items: make([]Item, 0)}
 }
 
 func (l *list) Add(item Item) ItemIndex {
-	return ItemIndex{}
+	l.items = append(l.items, item)
+	return ItemIndex{N: len(l.items) - 1}
 }
 
 func (l *list) Done(i ItemIndex) error {
@@ -30,7 +32,7 @@ func (l *list) Done(i ItemIndex) error {
 }
 
 func (l *list) ListItems() []Item {
-	return nil
+	return append([]Item{}, l.items...)
 }
 
 func (l *list) ListAllItems() []Item {
